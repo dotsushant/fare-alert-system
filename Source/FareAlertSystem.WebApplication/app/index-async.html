@@ -1,0 +1,115 @@
+﻿<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
+    <link rel="stylesheet" href="app.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
+
+    <title>Fare Alert App</title>
+
+
+    <script type="text/javascript">
+
+    </script>
+</head>
+<body ng-app="fareAlertApp" ng-cloak>
+    <md-toolbar class="md-primary md-hue-1">
+        <div class="md-toolbar-tools">
+            <h2 class="md-flex">Add Fare Alert</h2>
+        </div>
+    </md-toolbar>
+    <md-content layout="column" layout-padding>
+
+        <div id="radioButtonsContainer" ng-controller="radioButtonsController as ctrl" layout-margin layout-align="center none"
+             layout-wrap>
+            <md-radio-group ng-model="group" layout="row" layout-align="center none">
+                <md-radio-button ng-repeat="d in radioData"
+                                 ng-value="d.value"
+                                 ng-disabled=" d.isDisabled ">
+                    {{ d.label }}
+                </md-radio-button>
+            </md-radio-group>
+        </div>
+
+        <div id="selectContainer" ng-controller="selectController as ctrl" layout="row" layout-margin layout-align="center none">
+            <md-input-container flex="20">
+                <label>From</label>
+                <md-select ng-model="selectedFrom">
+                    <md-option ng-value="from" ng-repeat="from in fromCities">{{ from.name }}</md-option>
+                </md-select>
+            </md-input-container>
+            <br>
+            <md-input-container flex="20">
+                <label>To</label>
+                <md-select ng-model="selectedTo">
+                    <md-option ng-value="to" ng-repeat="to in toCities">{{ to.name }}</md-option>
+                </md-select>
+            </md-input-container>
+
+        </div>
+
+        <div id="dateContainer" layout="row" layout-margin layout-align="center none">
+            <md-datepicker ng-model="onwardDate" md-placeholder="Enter Date">st</md-datepicker>
+
+            <md-datepicker ng-model="returnDate" md-placeholder="Enter Date">ed</md-datepicker>
+        </div>
+        <!--<div layout-gt-sm="row" layout-margin layout-align="center none">
+            <div flex-gt-sm class="date-picker-row">
+                <label for="email" translate>Start Date</label>
+                <md-datepicker ng-model="onwardDate" md-placeholder="Enter Date"></md-datepicker>
+            </div>
+            <div flex-gt-sm class="date-picker-row">
+                <label for="email" translate>Return Date</label>
+                <md-datepicker ng-model="returnDate" md-placeholder="Enter Date"></md-datepicker>
+            </div>
+        </div>-->
+
+        <div id="passengerSelectContainer" ng-controller="passengerSelectContainer as ctrl" layout="row" layout-align="center none"
+             layout-margin layout-wrap>
+            <md-input-container>
+                <label>Adults</label>
+                <md-select ng-model="selectedAdults">
+                    <md-option ng-value="adult" ng-repeat="adult in adults">{{ adult.id }}</md-option>
+                </md-select>
+            </md-input-container>
+
+            <md-input-container>
+                <label>Kids</label>
+                <md-select ng-model="selectedKids">
+                    <md-option ng-value="adult" ng-repeat="adult in adults">{{ adult.id }}</md-option>
+                </md-select>
+            </md-input-container>
+
+            <md-input-container>
+                <label>Infants</label>
+                <md-select ng-model="selectedInfants">
+                    <md-option ng-value="adult" ng-repeat="adult in adults">{{ adult.id }}</md-option>
+                </md-select>
+            </md-input-container>
+
+        </div>
+
+        <div layout="row" layout-align="center none">
+            <md-input-container layout-margin layout-align="center none">
+                <label>Email</label>
+                <input required name="userEmail" ng-model="userEmail" layout-align="center none">
+                <div ng-messages="userEmail.$error">
+                    <div ng-message="required">Email Id is required.</div>
+                </div>
+            </md-input-container>
+        </div>
+
+        <div layout="row" layout-align="center none">
+            <md-button class="md-accent md-raised">Add Alert</md-button>
+        </div>
+
+    </md-content>
+    <script src="app.js"></script>
+
+    <!--ot's App	 	Application Key -   "c7118ecd8558a0dc20af5f357c88f009"-->	
+    <!--kapilapp        API Key -           "62c8126824545316f07aa3d9e70fc365"-->
+</body>
+</html>
